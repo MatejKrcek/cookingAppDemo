@@ -1,5 +1,7 @@
 import 'package:cooking_app/pages/instruction_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:cooking_app/provider/time_provider.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -39,7 +41,7 @@ class _MainScreenState extends State<MainScreen> {
                         style: Theme.of(context).textTheme.headline1,
                       ),
                       Text(
-                        '30 min',
+                        '2 mins',
                         style: Theme.of(context).textTheme.headline2,
                       ),
                       Text(
@@ -51,6 +53,7 @@ class _MainScreenState extends State<MainScreen> {
                           primary: Colors.white,
                         ),
                         onPressed: () {
+                          Provider.of<TimeProvider>(context, listen: false).newTime = 120;
                           Navigator.push(
                             context,
                             MaterialPageRoute(

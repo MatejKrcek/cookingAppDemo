@@ -5,9 +5,12 @@ import 'dart:async';
 
 class TimeProvider with ChangeNotifier {
   Timer? _timer;
-  int _currentTime = 10;
+  int _currentTime = 120;
 
   int get currentTime => _currentTime;
+  set newTime(int _newTime) {
+    _currentTime = _newTime;
+  }
 
   void playSound() {
     final AudioCache _player = AudioCache();
@@ -24,7 +27,7 @@ class TimeProvider with ChangeNotifier {
           timer.cancel();
           notifyListeners();
           playSound();
-        } else if (_currentTime == 5) {
+        } else if (_currentTime == 60) {
           _currentTime--;
           notifyListeners();
           playSound();
